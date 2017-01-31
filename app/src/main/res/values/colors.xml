@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="border_gray" type="color">#bdbdbd</item>
+    <item name="wrong_red" type="color">#ef5350</item>
+    <item name="right_green" type="color">#00c600</item>
+    <item name="card_view_background" type="color">#FFF</item>
+    <color name="colorPrimary">#125688</color>
+    <color name="colorPrimaryDark">#125688</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="colorAccent">#c8e8ff</color>
+</resources>

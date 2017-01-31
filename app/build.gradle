@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 'Google Inc.:Google APIs:23'
+    buildToolsVersion "23.0.2"
+    defaultConfig {
+        applicationId "cz.honzakasik.geography"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    dexOptions {
+        preDexLibraries = false
+        javaMaxHeapSize "4g"
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:23.2.0'
+    compile 'org.slf4j:slf4j-api:1.7.12' //Better logger specification
+    compile 'eu.lp0.slf4j:slf4j-android:1.7.12-0' //Better logger implementation
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'org.mapsforge:mapsforge-map-android:0.6.0'
+    compile 'com.caverock:androidsvg:1.2.1'
+    compile 'com.wunderlist:sliding-layer:1.2.5'
+    compile 'com.neovisionaries:nv-i18n:1.18' //Country codes
+    compile 'org.greenrobot:eventbus:3.0.0' //Eventbus - Activity-Activity communication
+    compile 'pub.devrel:easypermissions:0.1.5'
+    compile (
+            [group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.4.1'],
+            [group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.4.1'],
+            [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.4.1']
+    )
+    compile 'commons-io:commons-io:2.4'
+    compile 'com.android.support:design:23.2.0'
+    compile 'com.github.shell-software:fab:1.1.2'
+    compile 'com.j256.ormlite:ormlite-core:4.23'
+    compile 'com.j256.ormlite:ormlite-android:4.45'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.devbrackets.android:exomedia:3.0.1'
+}

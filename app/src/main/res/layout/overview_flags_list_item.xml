@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cz.honzakasik.geography.education.flags.FlagListItem
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/flag_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/border_flag"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:padding="1dp"
+        android:contentDescription="Flag of state" />
+
+    <ProgressBar
+        android:id="@+id/flag_progress_bar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true" />
+
+</cz.honzakasik.geography.education.flags.FlagListItem>

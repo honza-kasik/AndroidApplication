@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="food">
+        <attr name="state_answered_wrong" format="boolean" />
+        <attr name="state_answered_right" format="boolean" />
+    </declare-styleable>
+</resources>

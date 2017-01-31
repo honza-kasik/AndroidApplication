@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/quiz_flipper_view"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".games.quiz.QuestionActivity">
+
+
+    <include layout="@layout/quiz_flipper_header_view"
+        android:id="@+id/quiz_header_include_point"/>
+
+    <LinearLayout
+        android:id="@+id/quiz_footer_including_shadow"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/quiz_flipper_footer_view"
+                android:layout_width="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_height="60dp"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_below="@id/quiz_header_include_point"
+        android:layout_above="@id/quiz_footer_including_shadow"
+        android:id="@+id/quiz_question_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="10dip"
+            android:background="@drawable/gradient_shadow_top" >
+            <!--SHADOW-->
+        </View>
+
+        <ScrollView
+            android:fillViewport="true"
+            android:cacheColorHint="@color/border_gray"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ViewFlipper
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/quiz_flipper">
+            </ViewFlipper>
+
+        </ScrollView>
+
+        <View
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="10dip"
+            android:background="@drawable/gradient_shadow_bottom" >
+            <!--SHADOW-->
+        </View>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

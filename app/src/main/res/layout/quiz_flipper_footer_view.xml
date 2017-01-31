@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cz.honzakasik.geography.common.quiz.layout.QuizFooterView
+    android:id="@+id/quiz_footer_view"
+    android:background="@drawable/quiz_footer_background"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingRight="10dip"
+    android:paddingLeft="10dip"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="@string/quiz_point_count"
+            android:id="@+id/quiz_footer_points_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:paddingLeft="5dip"
+            android:layout_toEndOf="@id/quiz_footer_points_text"
+            android:layout_centerVertical="true"
+            android:id="@+id/quiz_footer_points_amount"
+            android:textSize="15pt"
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/quiz_footer_try_count_text"
+            android:text="@string/quiz_try_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:paddingLeft="5dip"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/quiz_footer_try_count_text"
+            android:id="@+id/quiz_footer_try_count"
+            android:textSize="15pt"
+            android:textColor="#FF0000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+</cz.honzakasik.geography.common.quiz.layout.QuizFooterView>

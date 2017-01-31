@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="#000">
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main_menu_activity_content"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainMenuActivity"
+        android:visibility="invisible">
+
+        <!--ROW-->
+        <LinearLayout
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:onClick="openMapQuizzesMenu"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#ffd500">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true">
+
+                    <ImageView
+                        android:layout_weight="1"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/map_quiz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:padding="20dp" />
+
+                    <TextView
+                        android:layout_weight="0"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:gravity="center_horizontal"
+                        android:text="@string/main_menu_map_quizzes"
+                        android:textSize="20sp"
+                        android:textAllCaps="true"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:onClick="openQuizzesMenu"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#3a78ff"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true">
+
+                    <ImageView
+                        android:layout_weight="1"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/quiz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:padding="20dp" />
+
+                    <TextView
+                        android:layout_weight="0"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:gravity="center_horizontal"
+                        android:text="@string/main_menu_quizzes"
+                        android:textSize="20sp"
+                        android:textAllCaps="true"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+        <!--END ROW-->
+
+        <!--ROW-->
+        <LinearLayout
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:onClick="openLearningMenu"
+                android:src="@drawable/skyline"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#ff4346"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true">
+
+                    <ImageView
+                        android:layout_weight="1"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/learning"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:padding="20dp" />
+
+                    <TextView
+                        android:layout_weight="0"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:gravity="center_horizontal"
+                        android:text="@string/main_menu_learning"
+                        android:textSize="20sp"
+                        android:textAllCaps="true"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:onClick="openSettings"
+                android:src="@drawable/skyline"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#bbff46"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true">
+
+                    <ImageView
+                        android:layout_weight="1"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/setting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:padding="20dp" />
+
+                    <TextView
+                        android:layout_weight="0"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:gravity="center_horizontal"
+                        android:text="@string/main_menu_settings"
+                        android:textSize="20sp"
+                        android:textAllCaps="true"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+        <!--END ROW-->
+
+    </LinearLayout>
+
+    <ProgressBar
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:id="@+id/main_menu_activity_progressbar"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

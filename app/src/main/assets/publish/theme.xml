@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rendertheme
+  xmlns="http://mapsforge.org/renderTheme"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://mapsforge.org/renderTheme renderTheme-v4.xsd"
+  version="4"
+  map-background="#FFFFFF"
+  map-background-outside="#dddddd">
+
+  <rule e="way" k="boundary" v="administrative">
+    <area stroke="#000000" stroke-width="2.5"/>
+  </rule>
+
+  <rule e="way" k="natural" v="nosea">
+    <area fill="#CEFFBA"/>
+  </rule>
+
+  <rule e="way" k="natural" v="sea">
+    <area fill="#4AD2FF"/>
+  </rule>
+
+</rendertheme>

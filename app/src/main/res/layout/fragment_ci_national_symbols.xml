@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/CountryInfo.NationalSymbols.Headline"
+        android:text="@string/country_view_flag_label"/>
+
+    <RelativeLayout
+        android:id="@+id/flag_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/flagView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/border_flag"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:padding="1dp"
+            android:contentDescription="@string/country_view_flag_content_description" />
+        <ProgressBar
+            android:id="@+id/flag_progress_bar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/national_symbols_anthem_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/CountryInfo.NationalSymbols.Headline"
+        android:text="@string/country_view_anthem_label"/>
+
+    <cz.honzakasik.geography.audioplayer.AudioPlayerView
+        android:id="@+id/anthem_player"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </cz.honzakasik.geography.audioplayer.AudioPlayerView>
+
+</LinearLayout>

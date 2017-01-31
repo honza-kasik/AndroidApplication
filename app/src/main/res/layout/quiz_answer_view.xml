@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cz.honzakasik.geography.common.quiz.answer.AnswerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/answerLayoutStyle"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@drawable/answer_background">
+
+    <TextView
+        style="@style/Question.Answer.Letter"
+        android:duplicateParentState="true"
+        android:id="@+id/quiz_answer_letter"
+        android:layout_centerVertical="true" />
+
+    <TextView
+        style="@style/Question.Answer.Text"
+        android:id="@+id/quiz_answer_text"
+        android:duplicateParentState="true"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/quiz_answer_letter"
+        android:layout_toEndOf="@+id/quiz_answer_letter" />
+
+</cz.honzakasik.geography.common.quiz.answer.AnswerLayout>

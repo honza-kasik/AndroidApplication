@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/locationActivity"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <RelativeLayout
+        android:id="@+id/location_activity_content"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <org.mapsforge.map.android.view.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </org.mapsforge.map.android.view.MapView>
+
+        <include layout="@layout/location_sliding_country_view"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:orientation="vertical">
+
+    <cz.honzakasik.geography.common.location.layout.TopPanelContainer
+        style="@style/MapQuizContainerItem"
+        android:id="@+id/map_quiz_question_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:text="Question"
+            android:textSize="20sp"
+            android:paddingBottom="10dip"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/map_quiz_container_question_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:id="@+id/map_quiz_container_question_image_container"
+            android:layout_width="match_parent"
+            android:layout_height="150dip">
+
+            <ImageView
+                android:id="@+id/map_quiz_container_question_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/border_flag"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:padding="1dp"
+                android:visibility="gone"
+                android:contentDescription="Flag of state" />
+
+            <ProgressBar
+                android:id="@+id/map_quiz_container_question_progress_bar"
+                android:layout_width="80dip"
+                android:layout_height="80dip"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
+
+    </cz.honzakasik.geography.common.location.layout.TopPanelContainer>
+
+    <TextView
+        android:textSize="20sp"
+        android:gravity="center"
+        android:visibility="gone"
+        style="@style/MapQuizContainerItem"
+        android:id="@+id/map_quiz_container_message_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cz.honzakasik.geography.common.quiz.layout.QuizHeaderView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Question.HeaderView"
+    android:id="@+id/quiz_header"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@drawable/quiz_header_background">
+
+    <TextView
+        android:id="@+id/quiz_header_question"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:textSize="20sp"
+        android:text="@string/question" />
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignEnd="@+id/quiz_header_question"
+        android:layout_alignRight="@+id/quiz_header_question"
+        android:layout_alignTop="@+id/quiz_header_question">
+
+        <TextView
+            android:id="@+id/quiz_header_numbering_question_current"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            style="@style/QuestionCounter" />
+
+        <TextView
+            style="@style/QuestionCounter.QuestionFrom"
+            android:id="@+id/quiz_header_numbering_from"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/quiz_question_from"/>
+
+        <TextView
+            style="@style/QuestionCounter"
+            android:id="@+id/quiz_header_numbering_question_total"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</cz.honzakasik.geography.common.quiz.layout.QuizHeaderView>

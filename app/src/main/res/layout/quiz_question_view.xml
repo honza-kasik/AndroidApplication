@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Question view contains question and answers-->
+<cz.honzakasik.geography.common.quiz.question.layout.QuestionView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/question_view"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <ViewStub
+        android:id="@+id/question_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:id="@+id/question_answer_wrapper">
+    </LinearLayout>
+
+
+</cz.honzakasik.geography.common.quiz.question.layout.QuestionView>

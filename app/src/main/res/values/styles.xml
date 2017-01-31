@@ -1,0 +1,147 @@
+<resources>
+
+    <style name="QuestionCounter" parent="@android:style/TextAppearance">
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="QuestionCounter.QuestionFrom">
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+    </style>
+
+    <style name="Question">
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="Question.HeaderView">
+        <item name="android:paddingLeft">10dip</item>
+        <item name="android:paddingRight">10dip</item>
+    </style>
+
+    <style name="Question.Text">
+        <item name="android:textSize">20sp</item>
+        <item name="android:paddingBottom">10dip</item>
+    </style>
+
+    <style name="answerLayoutStyle">
+        <item name="android:layout_margin">409dp</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_width">fill_parent</item>
+    </style>
+
+    <style name="Question.Answer">
+        <item name="android:textColor">@drawable/answer_background_text</item>
+    </style>
+
+    <style name="Question.Answer.Text">
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">3dip</item>
+        <item name="android:layout_marginTop">3dip</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="Question.Answer.Letter">
+        <item name="android:layout_width">50dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">3dip</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">50sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:shadowColor">#bdbdbd</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="CountryView">
+
+    </style>
+
+    <style name="CountryView.CountryName">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CountryView.Label">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="CountryView.Label.Flag">
+        <item name="android:textSize">20sp</item>
+        <item name="android:paddingBottom">5dp</item>
+    </style>
+
+    <style name="CountryView.Value">
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingLeft">20dp</item>
+    </style>
+
+    <style name="Theme.Rating" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">#ffca28</item>
+        <item name="colorControlActivated">#ffca28</item>
+    </style>
+
+
+    <style name="MapQuizContainerItem">
+        <item name="android:padding">10dip</item>
+        <item name="android:layout_marginTop">10dip</item>
+        <item name="android:layout_marginRight">10dip</item>
+        <item name="android:layout_marginLeft">10dip</item>
+        <item name="android:background">@drawable/cardview_background</item>
+    </style>
+
+    <style name="MainWindowButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:padding">10pt</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="MyMaterialTheme" parent="MyMaterialTheme.Base">
+
+    </style>
+
+    <style name="MyMaterialThemeNoActionBar" parent="MyMaterialTheme.Base">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="MyMaterialTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="CountryInfo">
+
+    </style>
+
+    <style name="CountryInfo.NationalSymbols">
+
+    </style>
+
+    <style name="CountryInfo.NationalSymbols.Headline">
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+    <style name="Results">
+    </style>
+
+    <style name="Results.List">
+    </style>
+
+    <style name="Results.List.Item">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+</resources>

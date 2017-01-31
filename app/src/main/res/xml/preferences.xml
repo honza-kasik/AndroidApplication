@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/user_settings">
+        <CheckBoxPreference
+            android:key="enableUsers"
+            android:title="@string/enable_users"
+            android:summary="@string/enable_users_summary" />
+        <PreferenceScreen
+            android:dependency="enableUsers"
+            android:title="@string/users"
+            android:summary="@string/users_summary">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetPackage="cz.honzakasik.geography"
+                android:targetClass="cz.honzakasik.geography.settings.UsersManagementActivity" />
+        </PreferenceScreen>
+        <ListPreference
+            android:dependency="enableUsers"
+            android:key="defaultUser"
+            android:title="@string/select_default_user">
+        </ListPreference>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/language_settings">
+        <ListPreference
+            android:key="overriddenLanguage"
+            android:title="@string/select_default_language"
+            android:summary="@string/select_default_language_summary"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/settings_about_application">
+        <Preference
+            android:key="aboutApplication"
+            android:title="@string/settings_about_application"
+            android:summary="@string/settings_about_application_summary"/>
+        <Preference
+            android:key="aboutMedia"
+            android:title="@string/settings_about_media"
+            android:summary="@string/settings_about_media_summary"/>
+    </PreferenceCategory>
+</PreferenceScreen>

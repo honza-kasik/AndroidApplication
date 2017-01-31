@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    tools:context=".settings.UsersManagementActivity">
+
+    <ListView
+        android:id="@+id/setting_list_of_users"
+        android:focusable="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:choiceMode="singleChoice">
+    </ListView>
+
+
+    <com.software.shell.fab.ActionButton
+        android:id="@+id/add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        fab:image="@drawable/icon_plus"
+        fab:button_color="#b9f6ca" />
+
+    <com.software.shell.fab.ActionButton
+        android:visibility="invisible"
+        android:id="@+id/remove_user_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        fab:image="@drawable/icon_trash"
+        fab:button_color="#ef9a9a"
+        fab:show_animation="@anim/fab_roll_from_right"
+        fab:hide_animation="@anim/fab_roll_to_right" />
+
+</RelativeLayout>
