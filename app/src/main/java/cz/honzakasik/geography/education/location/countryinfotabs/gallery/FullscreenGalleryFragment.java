@@ -86,7 +86,7 @@ public class FullscreenGalleryFragment extends DialogFragment {
         if (image.isPublicDomain()) {
             authorLabel.setText(getString(R.string.image_public_domain));
         } else {
-            authorLabel.setText(String.format(getString(R.string.image_author_placeholder), image.getAuthor()));
+            authorLabel.setText(String.format(getString(R.string.image_author_placeholder), image.getAuthor(), image.getLicense()));
         }
         descriptionLabel.setText(image.getDescription());
     }

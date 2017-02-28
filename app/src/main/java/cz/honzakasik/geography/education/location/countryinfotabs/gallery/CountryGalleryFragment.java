@@ -113,7 +113,7 @@ public class CountryGalleryFragment extends Fragment {
 
         final ImageNameValidator nameValidator = new ImageNameValidator();
         final ObjectMapper objectMapper = new ObjectMapper();
-        final Locale currentLocale = getResources().getConfiguration().locale;
+        final GalleryImageMetadataParser.Builder metadataParserBuilder = new GalleryImageMetadataParser.Builder(getContext()).objectMapper(objectMapper);
         for (String file : files) {
             if (nameValidator.isExpectedImageFormat(file)) {
                 final GalleryImage.Builder builder = new GalleryImage.Builder();
@@ -129,22 +129,14 @@ public class CountryGalleryFragment extends Fragment {
                 //load metadata
                 final String metadataFileName = FilenameUtils.removeExtension(file) +
                         PropUtils.get("resources.country.photo.metadata.suffix");
+                final GalleryImageMetadataParser parser = metadataParserBuilder
+                        .inputStream(getContext().getAssets().open(countryRelativeFolder + File.separator + metadataFileName))
+                        .build();
 
-                final JsonNode countryJsonNode = objectMapper.readValue(getContext().getAssets()
-                        .open(countryRelativeFolder + File.separator + metadataFileName), JsonNode.class);
-
-                final String descriptionIdentifier = PropUtils.get("resources.country.photo.metadata.json.description");
-                final String defaultDescriptionNodeIdentifier = descriptionIdentifier  + "_" + Locale.ENGLISH.getLanguage();
-                final String localisedDescriptionNodeIdentifier = descriptionIdentifier + "_" + currentLocale.getLanguage();
-
-                JsonNode descriptionNode = countryJsonNode.get(localisedDescriptionNodeIdentifier);
-                if (descriptionNode == null) { //if localised text is not found
-                    descriptionNode = countryJsonNode.get(defaultDescriptionNodeIdentifier);
-                }
-
-                builder.description(descriptionNode.asText())
-                        .author(countryJsonNode.get(PropUtils.get("resources.country.photo.metadata.json.author")).asText())
-                        .publicDomain(countryJsonNode.get(PropUtils.get("resources.country.photo.metadata.json.publicdomain")).asBoolean());
+                builder.description(parser.getDescription())
+                        .author(parser.getAuthor())
+                        .license(parser.getLicense())
+                        .publicDomain(parser.isPublicDomain());
 
                 images.add(builder.build());
             }

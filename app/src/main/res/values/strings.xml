@@ -353,7 +353,7 @@
     <string name="hard_difficulty">Hard difficulty</string>
 
     <string name="image_public_domain">Image available in public domain</string>
-    <string name="image_author_placeholder">Author: %s</string>
+    <string name="image_author_placeholder">Author: %1$s, %2$s</string>
 
 
 </resources>
