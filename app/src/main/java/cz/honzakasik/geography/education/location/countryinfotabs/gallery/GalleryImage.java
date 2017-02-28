@@ -8,6 +8,7 @@ class GalleryImage implements Serializable {
     private String name;
     private String description;
     private String author;
+    private String license;
 
     private URI imagePath;
 
@@ -17,6 +18,7 @@ class GalleryImage implements Serializable {
         this.name = builder.name;
         this.description = builder.description;
         this.author = builder.author;
+        this.license = builder.license;
         this.imagePath = builder.imagePath;
         this.publicDomain = builder.publicDomain;
     }
@@ -37,6 +39,10 @@ class GalleryImage implements Serializable {
         return author;
     }
 
+    public String getLicense() {
+        return license;
+    }
+
     public boolean isPublicDomain() {
         return publicDomain;
     }
@@ -46,6 +52,7 @@ class GalleryImage implements Serializable {
         private String name;
         private String description;
         private String author;
+        private String license;
         private URI imagePath;
         private boolean publicDomain;
 
@@ -71,6 +78,11 @@ class GalleryImage implements Serializable {
 
         public Builder publicDomain(boolean value) {
             this.publicDomain = value;
+            return this;
+        }
+
+        public Builder license(String license) {
+            this.license = license;
             return this;
         }
 
