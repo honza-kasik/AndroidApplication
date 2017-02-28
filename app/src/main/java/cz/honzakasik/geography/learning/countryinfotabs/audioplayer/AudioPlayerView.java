@@ -1,4 +1,4 @@
-package cz.honzakasik.geography.audioplayer;
+package cz.honzakasik.geography.learning.countryinfotabs.audioplayer;
 
 import android.app.Activity;
 import android.content.Context;

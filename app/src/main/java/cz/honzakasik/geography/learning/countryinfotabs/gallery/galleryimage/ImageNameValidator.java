@@ -1,4 +1,4 @@
-package cz.honzakasik.geography.education.location.countryinfotabs.gallery;
+package cz.honzakasik.geography.learning.countryinfotabs.gallery.galleryimage;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import cz.honzakasik.geography.education.flags.FlagOverviewActivity;
-import cz.honzakasik.geography.education.location.LocationActivity;
+import cz.honzakasik.geography.learning.flags.FlagOverviewActivity;
+import cz.honzakasik.geography.learning.location.LocationActivity;
 
 public class LearningMenuActivity extends Activity {
 

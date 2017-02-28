@@ -1,9 +1,9 @@
-package cz.honzakasik.geography.education.location.countryinfotabs.gallery;
+package cz.honzakasik.geography.learning.countryinfotabs.gallery.galleryimage;
 
 import java.io.Serializable;
 import java.net.URI;
 
-class GalleryImage implements Serializable {
+public class GalleryImage implements Serializable {
 
     private String name;
     private String description;
@@ -47,7 +47,7 @@ class GalleryImage implements Serializable {
         return publicDomain;
     }
 
-    static final class Builder {
+    public static final class Builder {
 
         private String name;
         private String description;

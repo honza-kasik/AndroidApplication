@@ -1,4 +1,4 @@
-package cz.honzakasik.geography.education.location.countryinfotabs;
+package cz.honzakasik.geography.learning.countryinfotabs;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -28,7 +28,7 @@ import cz.honzakasik.geography.common.location.countryinfo.CountryDataAdapter;
 import cz.honzakasik.geography.common.location.countryinfo.LabelValuePair;
 import cz.honzakasik.geography.common.utils.PropUtils;
 import cz.honzakasik.geography.common.utils.ResHelper;
-import cz.honzakasik.geography.education.location.CountryInfoActivity;
+import cz.honzakasik.geography.learning.location.CountryInfoActivity;
 
 public class BasicCountryInfoFragment extends Fragment {
 

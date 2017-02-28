@@ -1,4 +1,4 @@
-package cz.honzakasik.geography.education.flags;
+package cz.honzakasik.geography.learning.flags;
 
 import android.content.Context;
 import android.os.Bundle;

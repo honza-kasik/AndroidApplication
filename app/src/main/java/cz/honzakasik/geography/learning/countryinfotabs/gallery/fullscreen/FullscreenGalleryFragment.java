@@ -1,4 +1,4 @@
-package cz.honzakasik.geography.education.location.countryinfotabs.gallery;
+package cz.honzakasik.geography.learning.countryinfotabs.gallery.fullscreen;
 
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Locale;
 
 import cz.honzakasik.geography.R;
+import cz.honzakasik.geography.learning.countryinfotabs.gallery.galleryimage.GalleryImage;
 
 public class FullscreenGalleryFragment extends DialogFragment {
 

@@ -2,7 +2,6 @@ package cz.honzakasik.geography;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,8 +16,8 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.List;
 
-import cz.honzakasik.geography.education.flags.FlagOverviewActivity;
-import cz.honzakasik.geography.education.location.LocationActivity;
+import cz.honzakasik.geography.learning.flags.FlagOverviewActivity;
+import cz.honzakasik.geography.learning.location.LocationActivity;
 import cz.honzakasik.geography.common.location.country.Country;
 import cz.honzakasik.geography.common.location.country.CountryExtractor;
 import cz.honzakasik.geography.common.location.country.ExtractionObserver;

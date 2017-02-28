@@ -1,4 +1,4 @@
-package cz.honzakasik.geography.education.location;
+package cz.honzakasik.geography.learning.location;
 
 import android.content.Intent;
 import android.os.Bundle;
