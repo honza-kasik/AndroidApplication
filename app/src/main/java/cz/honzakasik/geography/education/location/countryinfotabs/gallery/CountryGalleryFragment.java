@@ -12,20 +12,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 import cz.honzakasik.geography.R;
 import cz.honzakasik.geography.common.location.country.Country;
 import cz.honzakasik.geography.common.utils.PropUtils;
 import cz.honzakasik.geography.education.location.CountryInfoActivity;
 
+/**
+ * Class representing whole gallery of images. In this class, images from file assets are loaded and
+ * then displayed
+ */
 public class CountryGalleryFragment extends Fragment {
 
     private final Logger logger = LoggerFactory.getLogger(CountryGalleryFragment.class);
@@ -85,24 +96,59 @@ public class CountryGalleryFragment extends Fragment {
         }
     }
 
+    /**
+     * Loads list of images with metadata according to iso-2 of country
+     * @param country images of this country will be load
+     * @return list of images with metadata of given country
+     * @throws IOException
+     */
     private List<GalleryImage> getImagesAccordingToCountry(@NonNull Country country)
             throws IOException {
         String alpha2Code = country.getIso2().toLowerCase();
         String rootPath = PropUtils.get("resources.country.photo.path");
         AssetManager assetManager = getContext().getAssets();
-        String[] photos = assetManager.list(rootPath + File.separator + alpha2Code);
+        String[] files = assetManager.list(rootPath + File.separator + alpha2Code);
 
         List<GalleryImage> images = new LinkedList<>();
 
-        for (String photo : photos) {
-            String fileUri = PropUtils.get("resources.country.photo.uri.prefix") +
-                    File.separator + rootPath +
-                    File.separator + alpha2Code +
-                    File.separator + photo;
-            logger.info("Creating new GalleryImage with uri '{}'.", fileUri);
-            images.add(new GalleryImage(photo, fileUri));
-        }
+        final ImageNameValidator nameValidator = new ImageNameValidator();
+        final ObjectMapper objectMapper = new ObjectMapper();
+        final Locale currentLocale = getResources().getConfiguration().locale;
+        for (String file : files) {
+            if (nameValidator.isExpectedImageFormat(file)) {
+                final GalleryImage.Builder builder = new GalleryImage.Builder();
 
+                final String countryRelativeFolder =  rootPath + File.separator + alpha2Code;
+                final String countryFolderURI = PropUtils.get("resources.country.photo.uri.prefix") +
+                        File.separator + countryRelativeFolder;
+                //get photo uri
+                final URI fileURI = URI.create(countryFolderURI + File.separator + file);
+                logger.info("Creating new GalleryImage with uri '{}'.", fileURI.toString());
+                builder.imagePath(fileURI);
+
+                //load metadata
+                final String metadataFileName = FilenameUtils.removeExtension(file) +
+                        PropUtils.get("resources.country.photo.metadata.suffix");
+
+                final JsonNode countryJsonNode = objectMapper.readValue(getContext().getAssets()
+                        .open(countryRelativeFolder + File.separator + metadataFileName), JsonNode.class);
+
+                final String descriptionIdentifier = PropUtils.get("resources.country.photo.metadata.json.description");
+                final String defaultDescriptionNodeIdentifier = descriptionIdentifier  + "_" + Locale.ENGLISH.getLanguage();
+                final String localisedDescriptionNodeIdentifier = descriptionIdentifier + "_" + currentLocale.getLanguage();
+
+                JsonNode descriptionNode = countryJsonNode.get(localisedDescriptionNodeIdentifier);
+                if (descriptionNode == null) { //if localised text is not found
+                    descriptionNode = countryJsonNode.get(defaultDescriptionNodeIdentifier);
+                }
+
+                builder.description(descriptionNode.asText())
+                        .author(countryJsonNode.get(PropUtils.get("resources.country.photo.metadata.json.author")).asText())
+                        .publicDomain(countryJsonNode.get(PropUtils.get("resources.country.photo.metadata.json.publicdomain")).asBoolean());
+
+                images.add(builder.build());
+            }
+        }
         return images;
     }
 

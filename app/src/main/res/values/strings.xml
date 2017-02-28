@@ -352,5 +352,8 @@
     <string name="moderate_difficulty">Moderate difficulty</string>
     <string name="hard_difficulty">Hard difficulty</string>
 
+    <string name="image_public_domain">Image available in public domain</string>
+    <string name="image_author_placeholder">Author: %s</string>
+
 
 </resources>

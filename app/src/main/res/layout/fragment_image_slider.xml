@@ -10,7 +10,7 @@
         android:background="@android:color/black" />
 
     <TextView
-        android:id="@+id/image_slider_lbl_count"
+        android:id="@+id/image_slider_count_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -30,19 +30,17 @@
         android:padding="20dp">
 
         <TextView
-            android:id="@+id/image_slider_meta_title"
+            android:id="@+id/image_slider_meta_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/image_slider_meta_date"
+            android:id="@+id/image_slider_meta_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
             android:textColor="@android:color/white" />
 
     </LinearLayout>

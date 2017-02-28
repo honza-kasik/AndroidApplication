@@ -22,9 +22,10 @@ public class FullscreenGalleryFragment extends DialogFragment {
 
     private List<GalleryImage> images;
     private ViewPager viewPager;
-    private TextView lblCount;
-    //private TextView lblTitle;
-    //private TextView lblDate;
+    private TextView countLabel;
+    private TextView authorLabel;
+    private TextView descriptionLabel;
+
     private int selectedPosition = 0;
 
     public FullscreenGalleryFragment() {
@@ -34,9 +35,9 @@ public class FullscreenGalleryFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
         View view = inflater.inflate(R.layout.fragment_image_slider, container, false);
         viewPager = (ViewPager) view.findViewById(R.id.image_slider_viewpager);
-        lblCount = (TextView) view.findViewById(R.id.image_slider_lbl_count);
-        //lblTitle = (TextView) view.findViewById(R.id.image_slider_meta_title);
-        //lblDate = (TextView) view.findViewById(R.id.image_slider_meta_date);
+        countLabel = (TextView) view.findViewById(R.id.image_slider_count_label);
+        authorLabel = (TextView) view.findViewById(R.id.image_slider_meta_author);
+        descriptionLabel = (TextView) view.findViewById(R.id.image_slider_meta_description);
 
         images = (List<GalleryImage>) getArguments().getSerializable("images");
         selectedPosition = getArguments().getInt("position");
@@ -79,11 +80,15 @@ public class FullscreenGalleryFragment extends DialogFragment {
     private void displayMetaInfo(int position) {
         Locale currentLocale = getResources().getConfiguration().locale;
         String xOfYString = getString(R.string.x_of_y);
-        lblCount.setText(String.format(currentLocale, xOfYString, (position + 1), images.size()));
+        countLabel.setText(String.format(currentLocale, xOfYString, (position + 1), images.size()));
 
-        //GalleryImage image = images.get(position);
-        //lblTitle.setText(image.getName());
-        //lblDate.setText(image.getTimestamp());
+        GalleryImage image = images.get(position);
+        if (image.isPublicDomain()) {
+            authorLabel.setText(getString(R.string.image_public_domain));
+        } else {
+            authorLabel.setText(String.format(getString(R.string.image_author_placeholder), image.getAuthor()));
+        }
+        descriptionLabel.setText(image.getDescription());
     }
 
     @Override

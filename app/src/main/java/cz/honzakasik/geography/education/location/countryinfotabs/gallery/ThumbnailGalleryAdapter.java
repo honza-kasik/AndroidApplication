@@ -51,8 +51,8 @@ public class ThumbnailGalleryAdapter extends RecyclerView.Adapter<ThumbnailGalle
     public void onBindViewHolder(ViewHolder holder, int position) {
         GalleryImage image = images.get(position);
 
-        logger.info("Loading image '{}'", image.getImage());
-        Glide.with(context).load(image.getImage())
+        logger.info("Loading image '{}'", image.getImagePath());
+        Glide.with(context).load(image.getImagePath().toString())
                 .thumbnail(0.5f)
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
