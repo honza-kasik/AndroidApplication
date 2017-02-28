@@ -13,6 +13,8 @@ import cz.honzakasik.geography.common.utils.PropUtils;
 
 public class GalleryImageMetadataParser {
 
+    private static final String[] PUBLIC_DOMAIN_LICENSES = {"CC PD"};
+
     private String author;
     private String license;
     private String sourceURL;
@@ -36,20 +38,29 @@ public class GalleryImageMetadataParser {
         this.description = getLocalizedDescriptionNode(countryJsonNode).asText();
         this.author = countryJsonNode.get(PropUtils.get("resources.country.photo.metadata.json.author")).asText();
         this.license = countryJsonNode.get(PropUtils.get("resources.country.photo.metadata.json.license")).asText();
-        this.publicDomain = countryJsonNode.get(PropUtils.get("resources.country.photo.metadata.json.publicdomain")).asBoolean();
+        this.publicDomain = isPublicDomain(this.license);
     }
 
     private JsonNode getLocalizedDescriptionNode(JsonNode countryJsonNode) {
         final String descriptionIdentifier = PropUtils.get("resources.country.photo.metadata.json.description");
-        final String defaultDescriptionNodeIdentifier = descriptionIdentifier  + "_" + Locale.ENGLISH.getLanguage();
-        final String localisedDescriptionNodeIdentifier = descriptionIdentifier + "_" + context.getResources().getConfiguration().locale.getLanguage();
+        final String defaultDescriptionNodeIdentifier = Locale.ENGLISH.getLanguage();
+        final String localisedDescriptionNodeIdentifier = context.getResources().getConfiguration().locale.getLanguage();
 
-        JsonNode descriptionNode = countryJsonNode.get(localisedDescriptionNodeIdentifier);
+        JsonNode descriptionNode = countryJsonNode.get(descriptionIdentifier).get(localisedDescriptionNodeIdentifier);
         if (descriptionNode == null) { //if localised text is not found
-            descriptionNode = countryJsonNode.get(defaultDescriptionNodeIdentifier);
+            descriptionNode = countryJsonNode.get(descriptionIdentifier).get(defaultDescriptionNodeIdentifier);
         }
 
         return descriptionNode;
+    }
+
+    private boolean isPublicDomain(String licenseString) {
+        for (String license : PUBLIC_DOMAIN_LICENSES) {
+            if (licenseString.equals(license)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public String getAuthor() {
