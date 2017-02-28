@@ -34,7 +34,7 @@ public class FullscreenGalleryAdapter extends PagerAdapter {
 
         GalleryImage image = images.get(position);
 
-        Glide.with(context).load(image.getImage())
+        Glide.with(context).load(image.getImagePath().toString())
                 .thumbnail(0.5f)
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
