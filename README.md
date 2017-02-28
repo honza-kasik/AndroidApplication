@@ -1,6 +1,6 @@
 # European geography learning application for Android #
 
-This application was created as a subject of my bachelor thesis. Synopsis says somthing like this:
+This application was created as a subject of my bachelor thesis.
 
 > Goal of this work is creating educational application for acquisition and practicing basic geography knowledge for persons with mental disabilities. Application is intended for OS Android. Application is created in cooperation with Klíč, social services center.
 
