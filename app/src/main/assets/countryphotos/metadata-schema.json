@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "object",
+      "patternProperties": {
+        "[a-z]{2}": {
+          "type": "string"
+        }
+      },
+      "required": ["en"]
+    },
+    "author": {
+      "type": "string"
+    },
+    "original_file": {
+      "type": "string"
+    },
+    "license": {
+      "type": "string",
+      "pattern": "CC (BY|BY-ND|BY-NC-ND|BY-NC|BY-NC-SA|BY-SA) ([1234]\\.0|2\\.5)|CC PD"
+    },
+    "source_url": {
+      "type": "string"
+    }
+  },
+  "required": ["author", "original_file", "description", "source_url", "license"]
+}
