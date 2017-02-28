@@ -6,6 +6,8 @@ This application was created as a subject of my bachelor thesis. Synopsis says s
 
 In its final state, application can be useful for little children, practicing their knowledge about Europe, or for persons with mental disabilities.
 
+Whole text of my thesis can be found at [theses.cz](http://theses.cz/id/itp4qu/bakalarska-prace.pdf?info=1) (in Czech).
+
 ## Current state
 
 Since I was in a rush I did not acknowledge autorship properly to authors whose media, licensed under Creative Commons, I used in this application. Because of this, they are not availeble for now and when I will have time, I surely add them. IN A CORRECT WAY.
