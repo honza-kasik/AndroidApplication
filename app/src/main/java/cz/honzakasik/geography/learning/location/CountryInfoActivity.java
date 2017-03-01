@@ -1,4 +1,4 @@
-package cz.honzakasik.geography.education.location;
+package cz.honzakasik.geography.learning.location;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Window;
 
 import org.greenrobot.eventbus.EventBus;
 import org.slf4j.Logger;
@@ -19,9 +18,9 @@ import java.util.List;
 
 import cz.honzakasik.geography.R;
 import cz.honzakasik.geography.common.location.country.Country;
-import cz.honzakasik.geography.education.location.countryinfotabs.BasicCountryInfoFragment;
-import cz.honzakasik.geography.education.location.countryinfotabs.gallery.CountryGalleryFragment;
-import cz.honzakasik.geography.education.location.countryinfotabs.NationalSymbolsFragment;
+import cz.honzakasik.geography.learning.countryinfotabs.BasicCountryInfoFragment;
+import cz.honzakasik.geography.learning.countryinfotabs.gallery.CountryGalleryFragment;
+import cz.honzakasik.geography.learning.countryinfotabs.NationalSymbolsFragment;
 
 public class CountryInfoActivity extends AppCompatActivity {
 

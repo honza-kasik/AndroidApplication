@@ -1,4 +1,4 @@
-package cz.honzakasik.geography.education.location.countryinfotabs.gallery;
+package cz.honzakasik.geography.learning.countryinfotabs.gallery;
 
 import android.annotation.TargetApi;
 import android.content.Context;

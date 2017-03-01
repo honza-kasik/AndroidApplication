@@ -1,4 +1,4 @@
-package cz.honzakasik.geography.education.location.countryinfotabs.gallery;
+package cz.honzakasik.geography.learning.countryinfotabs.gallery;
 
 import android.content.res.AssetManager;
 import android.os.Bundle;
@@ -12,10 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,12 +24,17 @@ import java.io.Serializable;
 import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
 
 import cz.honzakasik.geography.R;
 import cz.honzakasik.geography.common.location.country.Country;
 import cz.honzakasik.geography.common.utils.PropUtils;
-import cz.honzakasik.geography.education.location.CountryInfoActivity;
+import cz.honzakasik.geography.learning.location.CountryInfoActivity;
+import cz.honzakasik.geography.learning.countryinfotabs.gallery.fullscreen.FullscreenGalleryFragment;
+import cz.honzakasik.geography.learning.countryinfotabs.gallery.galleryimage.GalleryImage;
+import cz.honzakasik.geography.learning.countryinfotabs.gallery.galleryimage.GalleryImageMetadataParser;
+import cz.honzakasik.geography.learning.countryinfotabs.gallery.galleryimage.ImageNameValidator;
+import cz.honzakasik.geography.learning.countryinfotabs.gallery.thumbnail.ThumbnailGalleryAdapter;
+import cz.honzakasik.geography.learning.countryinfotabs.gallery.thumbnail.ThumbnailTouchListener;
 
 /**
  * Class representing whole gallery of images. In this class, images from file assets are loaded and

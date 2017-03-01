@@ -1,4 +1,4 @@
-package cz.honzakasik.geography.education.location.countryinfotabs.gallery;
+package cz.honzakasik.geography.learning.countryinfotabs.gallery.fullscreen;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
@@ -13,6 +13,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import java.util.List;
 
 import cz.honzakasik.geography.R;
+import cz.honzakasik.geography.learning.countryinfotabs.gallery.galleryimage.GalleryImage;
 
 public class FullscreenGalleryAdapter extends PagerAdapter {
 

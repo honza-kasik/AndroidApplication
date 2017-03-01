@@ -1,4 +1,4 @@
-package cz.honzakasik.geography.education.location.countryinfotabs;
+package cz.honzakasik.geography.learning.countryinfotabs;
 
 import android.graphics.Picture;
 import android.graphics.drawable.PictureDrawable;
@@ -25,12 +25,12 @@ import java.util.Arrays;
 
 import cz.honzakasik.geography.App;
 import cz.honzakasik.geography.R;
-import cz.honzakasik.geography.audioplayer.AudioPlayerView;
+import cz.honzakasik.geography.learning.countryinfotabs.audioplayer.AudioPlayerView;
 import cz.honzakasik.geography.common.location.country.Country;
 import cz.honzakasik.geography.common.tasks.LoadFlagImageTask;
 import cz.honzakasik.geography.common.tasks.PostExecuteTask;
 import cz.honzakasik.geography.common.utils.PropUtils;
-import cz.honzakasik.geography.education.location.CountryInfoActivity;
+import cz.honzakasik.geography.learning.location.CountryInfoActivity;
 
 public class NationalSymbolsFragment extends Fragment {
 

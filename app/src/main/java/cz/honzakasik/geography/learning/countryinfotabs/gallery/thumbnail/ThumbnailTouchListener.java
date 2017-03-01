@@ -1,10 +1,12 @@
-package cz.honzakasik.geography.education.location.countryinfotabs.gallery;
+package cz.honzakasik.geography.learning.countryinfotabs.gallery.thumbnail;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+
+import cz.honzakasik.geography.learning.countryinfotabs.gallery.ClickListener;
 
 public class ThumbnailTouchListener implements RecyclerView.OnItemTouchListener {
 

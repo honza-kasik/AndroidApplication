@@ -25,7 +25,7 @@
         </activity>
         <activity
             android:configChanges="orientation|screenSize"
-            android:name=".education.location.LocationActivity"
+            android:name=".learning.location.LocationActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
@@ -35,7 +35,7 @@
         </activity>
         <activity
             android:configChanges="orientation|screenSize"
-            android:name=".education.flags.FlagOverviewActivity"
+            android:name=".learning.flags.FlagOverviewActivity"
             android:label="@string/app_name">
         </activity>
         <activity
@@ -89,7 +89,7 @@
         <activity
             android:theme="@style/MyMaterialThemeNoActionBar"
             android:configChanges="orientation|screenSize"
-            android:name=".education.location.CountryInfoActivity"
+            android:name=".learning.location.CountryInfoActivity"
             android:label="@string/app_name">
         </activity>
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for

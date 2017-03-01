@@ -40,11 +40,11 @@
         style="@style/CountryInfo.NationalSymbols.Headline"
         android:text="@string/country_view_anthem_label"/>
 
-    <cz.honzakasik.geography.audioplayer.AudioPlayerView
+    <cz.honzakasik.geography.learning.countryinfotabs.audioplayer.AudioPlayerView
         android:id="@+id/anthem_player"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </cz.honzakasik.geography.audioplayer.AudioPlayerView>
+    </cz.honzakasik.geography.learning.countryinfotabs.audioplayer.AudioPlayerView>
 
 </LinearLayout>
