@@ -355,5 +355,12 @@
     <string name="image_public_domain">Image available in public domain</string>
     <string name="image_author_placeholder">Author: %1$s, %2$s</string>
 
+    <!--Example: 'foobar.jpg, (C) John Doe, CC BY-SA 3.'-->
+    <string name="media_report_author_and_license">%1$s, &#169; %2$s, %3$s</string>
+
+    <!--Example: 'foobar.jpg, CC PD.'-->
+    <string name="media_report_license">%1$s, %2$s</string>
+
+
 
 </resources>

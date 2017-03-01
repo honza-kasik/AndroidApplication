@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.ListPreference;
@@ -14,12 +15,15 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
+import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
@@ -34,6 +38,9 @@ import cz.honzakasik.geography.common.users.ORMLiteUserManager;
 import cz.honzakasik.geography.common.users.User;
 import cz.honzakasik.geography.common.users.UserManager;
 import cz.honzakasik.geography.common.users.PreferencesConstants;
+import cz.honzakasik.geography.common.utils.PropUtils;
+import cz.honzakasik.geography.learning.countryinfotabs.gallery.galleryimage.GalleryImageMetadata;
+import cz.honzakasik.geography.learning.countryinfotabs.gallery.galleryimage.GalleryImageMetadataParser;
 
 public class SettingFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -98,7 +105,7 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
                         .getSystemService(Context.LAYOUT_INFLATER_SERVICE))
                         .inflate(R.layout.dialog_media_about, null);
                 try {
-                    ((TextView)layout.findViewById(R.id.about_media_text)).setText(readAuthorsFile());
+                    ((TextView)layout.findViewById(R.id.about_media_text)).setText(loadPhotosMetadata());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -118,13 +125,43 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
         });
     }
 
-    private String readAuthorsFile() throws IOException {
-        StringBuilder stringBuilder = new StringBuilder();
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(context.getResources().openRawResource(R.raw.media_authors)));
-        String line = bufferedReader.readLine();
-        while (line != null) {
-            stringBuilder.append(line).append("\n\n");
-            line = bufferedReader.readLine();
+    /**
+     * Loads author and license metadata for all used images in country photos
+     * @return formatted list of authors and media names with license information
+     */
+    private String loadPhotosMetadata() throws IOException {
+        final AssetManager assetManager = getActivity().getAssets();
+        final String rootPath = PropUtils.get("resources.country.photo.path");
+        final String[] countryFolders = assetManager.list(rootPath);
+        final ObjectMapper objectMapper = new ObjectMapper();
+        final StringBuilder stringBuilder = new StringBuilder();
+
+        for (String countryFolder : countryFolders) {
+            final String countryFolderPath = rootPath + File.separator + countryFolder;
+            final String[] countryFiles = assetManager.list(countryFolderPath);
+            for (String file : countryFiles) {
+                if (FilenameUtils.isExtension(file, "json")) {
+                    final GalleryImageMetadata metadata = new GalleryImageMetadataParser.Builder(getActivity())
+                            .objectMapper(objectMapper)
+                            .inputStream(assetManager.open(countryFolderPath + File.separator + file))
+                            .build()
+                            .getMetadata();
+
+                    if (metadata.isPublicDomain()) {
+                        stringBuilder.append(
+                                String.format(getActivity().getString(R.string.media_report_license),
+                                        metadata.getOriginalFilename(),
+                                        metadata.getLicense()));
+                    } else {
+                        stringBuilder.append(
+                                String.format(getActivity().getString(R.string.media_report_author_and_license),
+                                        metadata.getOriginalFilename(),
+                                        metadata.getAuthor(),
+                                        metadata.getLicense()));
+                    }
+                    stringBuilder.append("\n");
+                }
+            }
         }
         return stringBuilder.toString();
     }

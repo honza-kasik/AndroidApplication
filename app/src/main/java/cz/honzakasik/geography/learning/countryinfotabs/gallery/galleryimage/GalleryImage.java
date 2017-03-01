@@ -6,21 +6,13 @@ import java.net.URI;
 public class GalleryImage implements Serializable {
 
     private String name;
-    private String description;
-    private String author;
-    private String license;
-
     private URI imagePath;
-
-    private boolean publicDomain;
+    private GalleryImageMetadata metadata;
 
     private GalleryImage(Builder builder) {
         this.name = builder.name;
-        this.description = builder.description;
-        this.author = builder.author;
-        this.license = builder.license;
         this.imagePath = builder.imagePath;
-        this.publicDomain = builder.publicDomain;
+        this.metadata = builder.metadata;
     }
 
     public String getName() {
@@ -31,43 +23,18 @@ public class GalleryImage implements Serializable {
         return imagePath;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public String getLicense() {
-        return license;
-    }
-
-    public boolean isPublicDomain() {
-        return publicDomain;
+    public GalleryImageMetadata getMetadata() {
+        return metadata;
     }
 
     public static final class Builder {
 
         private String name;
-        private String description;
-        private String author;
-        private String license;
         private URI imagePath;
-        private boolean publicDomain;
+        private GalleryImageMetadata metadata;
 
         public Builder name(String name) {
             this.name = name;
-            return this;
-        }
-
-        public Builder author(String author) {
-            this.author = author;
-            return this;
-        }
-
-        public Builder description(String description) {
-            this.description = description;
             return this;
         }
 
@@ -76,19 +43,13 @@ public class GalleryImage implements Serializable {
             return this;
         }
 
-        public Builder publicDomain(boolean value) {
-            this.publicDomain = value;
-            return this;
-        }
-
-        public Builder license(String license) {
-            this.license = license;
+        public Builder metadata(GalleryImageMetadata metadata) {
+            this.metadata = metadata;
             return this;
         }
 
         public GalleryImage build() {
             return new GalleryImage(this);
         }
-
     }
 }

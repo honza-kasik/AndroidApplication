@@ -15,30 +15,32 @@ public class GalleryImageMetadataParser {
 
     private static final String[] PUBLIC_DOMAIN_LICENSES = {"CC PD"};
 
-    private String author;
-    private String license;
-    private String sourceURL;
-    private String description;
-    private String originalFilename;
-    private boolean publicDomain;
     private ObjectMapper objectMapper;
     private Context context;
+
+    private GalleryImageMetadata metadata;
 
     private GalleryImageMetadataParser(Builder builder) throws IOException {
         this.objectMapper = builder.objectMapper;
         this.context = builder.context;
-        parse(builder.inputStream);
+        this.metadata = parse(builder.inputStream);
     }
 
-    private void parse(InputStream inputStream) throws IOException {
-        final JsonNode countryJsonNode = objectMapper.readValue(inputStream, JsonNode.class);
+    public GalleryImageMetadata getMetadata() {
+        return metadata;
+    }
 
-        this.sourceURL = countryJsonNode.get(PropUtils.get("resources.country.photo.metadata.json.sourceurl")).asText();
-        this.originalFilename = countryJsonNode.get(PropUtils.get("resources.country.photo.metadata.json.originalfilename")).asText();
-        this.description = getLocalizedDescriptionNode(countryJsonNode).asText();
-        this.author = countryJsonNode.get(PropUtils.get("resources.country.photo.metadata.json.author")).asText();
-        this.license = countryJsonNode.get(PropUtils.get("resources.country.photo.metadata.json.license")).asText();
-        this.publicDomain = isPublicDomain(this.license);
+    private GalleryImageMetadata parse(InputStream inputStream) throws IOException {
+        final JsonNode rootNode = objectMapper.readValue(inputStream, JsonNode.class);
+
+        return new GalleryImageMetadata.Builder()
+                .sourceURL(rootNode.get(PropUtils.get("resources.country.photo.metadata.json.sourceurl")).asText())
+                .originalFilename(rootNode.get(PropUtils.get("resources.country.photo.metadata.json.originalfilename")).asText())
+                .description(getLocalizedDescriptionNode(rootNode).asText())
+                .author(rootNode.get(PropUtils.get("resources.country.photo.metadata.json.author")).asText())
+                .license(rootNode.get(PropUtils.get("resources.country.photo.metadata.json.license")).asText())
+                .publicDomain(isPublicDomain(rootNode.get(PropUtils.get("resources.country.photo.metadata.json.license")).asText()))
+                .build();
     }
 
     private JsonNode getLocalizedDescriptionNode(JsonNode countryJsonNode) {
@@ -61,30 +63,6 @@ public class GalleryImageMetadataParser {
             }
         }
         return false;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public String getLicense() {
-        return license;
-    }
-
-    public String getSourceURL() {
-        return sourceURL;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getOriginalFilename() {
-        return originalFilename;
-    }
-
-    public boolean isPublicDomain() {
-        return publicDomain;
     }
 
     public static final class Builder {
