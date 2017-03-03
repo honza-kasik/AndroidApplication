@@ -357,8 +357,10 @@
     <string name="easy_difficulty">"Snadná obtížnost"</string>
     <string name="moderate_difficulty">"Mírná obtížnost"</string>
     <string name="hard_difficulty">"Těžká obtížnost"</string>
-    <string name="image_author_placeholder">Autor: %1$s, %2$s</string>
-    <string name="image_public_domain">Obrázek je dostupný ve veřejné doméně.</string>
+
+    <string name="work_author_placeholder">Autor: %1$s</string>
+    <string name="work_author_license_placeholder">Autor: %1$s, %2$s</string>
+    <string name="work_public_domain">Dílo je dostupné ve veřejné doméně</string>
 
 
 </resources>

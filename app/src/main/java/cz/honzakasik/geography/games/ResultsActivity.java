@@ -201,7 +201,7 @@ public class ResultsActivity extends OrmLiteBaseAppCompatActivity {
         logger.info("Inflating result row!");
         final LayoutInflater inflater = (LayoutInflater)this
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        return inflater.inflate(R.layout.result_list_item, null);
+        return inflater.inflate(R.layout.list_item_result, null);
     }
 
     private View populateInflatedView(View view, Result result, int n) {

@@ -1,6 +1,9 @@
 package cz.honzakasik.geography.learning.countryinfotabs.gallery.galleryimage;
 
-public class GalleryImageMetadata {
+/**
+ * Class wrapping metadata information about media used in application
+ */
+public class MediaMetadata {
 
     private String author;
     private String license;
@@ -9,7 +12,7 @@ public class GalleryImageMetadata {
     private String originalFilename;
     private boolean publicDomain;
 
-    private GalleryImageMetadata(String author, String license, String sourceURL, String description, String originalFilename, boolean publicDomain) {
+    private MediaMetadata(String author, String license, String sourceURL, String description, String originalFilename, boolean publicDomain) {
         this.author = author;
         this.license = license;
         this.sourceURL = sourceURL;
@@ -42,6 +45,9 @@ public class GalleryImageMetadata {
         return publicDomain;
     }
 
+    /**
+     * Class representing Builder pattern
+     */
     public static final class Builder {
 
         private String author;
@@ -81,8 +87,8 @@ public class GalleryImageMetadata {
             return this;
         }
 
-        public GalleryImageMetadata build() {
-            return new GalleryImageMetadata(author, license, sourceURL, description, originalFilename, publicDomain);
+        public MediaMetadata build() {
+            return new MediaMetadata(author, license, sourceURL, description, originalFilename, publicDomain);
         }
     }
 

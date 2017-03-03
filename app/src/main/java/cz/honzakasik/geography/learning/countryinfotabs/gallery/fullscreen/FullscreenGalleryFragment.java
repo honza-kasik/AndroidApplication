@@ -16,7 +16,7 @@ import java.util.Locale;
 
 import cz.honzakasik.geography.R;
 import cz.honzakasik.geography.learning.countryinfotabs.gallery.galleryimage.GalleryImage;
-import cz.honzakasik.geography.learning.countryinfotabs.gallery.galleryimage.GalleryImageMetadata;
+import cz.honzakasik.geography.learning.countryinfotabs.gallery.galleryimage.MediaMetadata;
 
 public class FullscreenGalleryFragment extends DialogFragment {
 
@@ -84,11 +84,11 @@ public class FullscreenGalleryFragment extends DialogFragment {
         String xOfYString = getString(R.string.x_of_y);
         countLabel.setText(String.format(currentLocale, xOfYString, (position + 1), images.size()));
 
-        GalleryImageMetadata metadata = images.get(position).getMetadata();
+        MediaMetadata metadata = images.get(position).getMetadata();
         if (metadata.isPublicDomain()) {
-            authorLabel.setText(getString(R.string.image_public_domain));
+            authorLabel.setText(getString(R.string.work_public_domain));
         } else {
-            authorLabel.setText(String.format(getString(R.string.image_author_placeholder), metadata.getAuthor(),
+            authorLabel.setText(String.format(getString(R.string.work_author_license_placeholder), metadata.getAuthor(),
                     metadata.getLicense()));
         }
         descriptionLabel.setText(metadata.getDescription());

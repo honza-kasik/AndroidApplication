@@ -7,7 +7,7 @@ public class GalleryImage implements Serializable {
 
     private String name;
     private URI imagePath;
-    private GalleryImageMetadata metadata;
+    private MediaMetadata metadata;
 
     private GalleryImage(Builder builder) {
         this.name = builder.name;
@@ -23,7 +23,7 @@ public class GalleryImage implements Serializable {
         return imagePath;
     }
 
-    public GalleryImageMetadata getMetadata() {
+    public MediaMetadata getMetadata() {
         return metadata;
     }
 
@@ -31,7 +31,7 @@ public class GalleryImage implements Serializable {
 
         private String name;
         private URI imagePath;
-        private GalleryImageMetadata metadata;
+        private MediaMetadata metadata;
 
         public Builder name(String name) {
             this.name = name;
@@ -43,7 +43,7 @@ public class GalleryImage implements Serializable {
             return this;
         }
 
-        public Builder metadata(GalleryImageMetadata metadata) {
+        public Builder metadata(MediaMetadata metadata) {
             this.metadata = metadata;
             return this;
         }

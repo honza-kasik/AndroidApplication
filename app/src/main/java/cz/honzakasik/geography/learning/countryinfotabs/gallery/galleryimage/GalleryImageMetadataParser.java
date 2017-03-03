@@ -18,7 +18,7 @@ public class GalleryImageMetadataParser {
     private ObjectMapper objectMapper;
     private Context context;
 
-    private GalleryImageMetadata metadata;
+    private MediaMetadata metadata;
 
     private GalleryImageMetadataParser(Builder builder) throws IOException {
         this.objectMapper = builder.objectMapper;
@@ -26,20 +26,21 @@ public class GalleryImageMetadataParser {
         this.metadata = parse(builder.inputStream);
     }
 
-    public GalleryImageMetadata getMetadata() {
+    public MediaMetadata getMetadata() {
         return metadata;
     }
 
-    private GalleryImageMetadata parse(InputStream inputStream) throws IOException {
+    private MediaMetadata parse(InputStream inputStream) throws IOException {
         final JsonNode rootNode = objectMapper.readValue(inputStream, JsonNode.class);
 
-        return new GalleryImageMetadata.Builder()
+        final String licenseString = rootNode.get(PropUtils.get("resources.country.photo.metadata.json.license")).asText();
+        return new MediaMetadata.Builder()
                 .sourceURL(rootNode.get(PropUtils.get("resources.country.photo.metadata.json.sourceurl")).asText())
                 .originalFilename(rootNode.get(PropUtils.get("resources.country.photo.metadata.json.originalfilename")).asText())
                 .description(getLocalizedDescriptionNode(rootNode).asText())
                 .author(rootNode.get(PropUtils.get("resources.country.photo.metadata.json.author")).asText())
-                .license(rootNode.get(PropUtils.get("resources.country.photo.metadata.json.license")).asText())
-                .publicDomain(isPublicDomain(rootNode.get(PropUtils.get("resources.country.photo.metadata.json.license")).asText()))
+                .license(licenseString)
+                .publicDomain(isPublicDomain(licenseString))
                 .build();
     }
 

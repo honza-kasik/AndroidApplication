@@ -52,7 +52,7 @@ public class CountryDataAdapter extends RecyclerView.Adapter<CountryDataAdapter.
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        View rowView = inflater.inflate(R.layout.list_two_lines, parent, false);
+        View rowView = inflater.inflate(R.layout.list_item_two_lines, parent, false);
 
         return new ViewHolder(rowView);
     }

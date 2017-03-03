@@ -144,4 +144,16 @@
         <item name="android:textSize">22sp</item>
     </style>
 
+    <style name="WorkAuthorListItem">
+    </style>
+
+    <style name="WorkAuthorListItem.WorkName">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="WorkAuthorListItem.WorkDetail">
+        <item name="android:textSize">14sp</item>
+    </style>
+
 </resources>

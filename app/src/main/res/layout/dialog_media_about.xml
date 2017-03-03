@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ListView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:id="@+id/about_media_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <TextView
-        android:padding="10dp"
-        android:layout_width="match_parent"
-        android:textSize="20sp"
-        android:text="Thanks to these authors for their work:"
-        android:layout_height="60dp" />
-    <ScrollView
-        android:layout_height="300dp"
-        android:layout_width="match_parent">
-        <EditText
-            android:id="@+id/about_media_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="false"
-            android:inputType="none"/>
-    </ScrollView>
-</LinearLayout>
+</ListView>
