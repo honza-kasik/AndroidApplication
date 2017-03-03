@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.ListPreference;
@@ -11,18 +12,21 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
+import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
@@ -34,6 +38,9 @@ import cz.honzakasik.geography.common.users.ORMLiteUserManager;
 import cz.honzakasik.geography.common.users.User;
 import cz.honzakasik.geography.common.users.UserManager;
 import cz.honzakasik.geography.common.users.PreferencesConstants;
+import cz.honzakasik.geography.common.utils.PropUtils;
+import cz.honzakasik.geography.learning.countryinfotabs.gallery.galleryimage.MediaMetadata;
+import cz.honzakasik.geography.learning.countryinfotabs.gallery.galleryimage.GalleryImageMetadataParser;
 
 public class SettingFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -56,7 +63,11 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
         addPreferencesFromResource(R.xml.preferences);
 
         bindAboutApplicationDialog();
-        bindAboutAuthorDialog();
+        try {
+            bindAboutAuthorDialog();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         try {
             populateSelectUserList();
@@ -90,21 +101,18 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
         });
     }
 
-    private void bindAboutAuthorDialog() {
+    private void bindAboutAuthorDialog() throws IOException {
         Preference dialogPreference = getPreferenceScreen().findPreference(PreferencesConstants.ABOUT_MEDIA);
+        final List<MediaMetadata> data = loadPhotosMetadata();
         dialogPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             public boolean onPreferenceClick(Preference preference) {
-                LinearLayout layout = (LinearLayout) ((LayoutInflater)context
+                ListView listView = (ListView) ((LayoutInflater)context
                         .getSystemService(Context.LAYOUT_INFLATER_SERVICE))
                         .inflate(R.layout.dialog_media_about, null);
-                try {
-                    ((TextView)layout.findViewById(R.id.about_media_text)).setText(readAuthorsFile());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                ListAdapter listAdapter =  new AuthorArrayAdapter(getActivity(), data);
+                listView.setAdapter(listAdapter);
                 new AlertDialog.Builder(context)
-                        .setView(R.layout.dialog_media_about)
-                        .setView(layout)
+                        .setView(listView)
                         .setCancelable(true)
                         .setNegativeButton(R.string.cancel_button_label, new DialogInterface.OnClickListener() {
                             @Override
@@ -118,15 +126,33 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
         });
     }
 
-    private String readAuthorsFile() throws IOException {
-        StringBuilder stringBuilder = new StringBuilder();
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(context.getResources().openRawResource(R.raw.media_authors)));
-        String line = bufferedReader.readLine();
-        while (line != null) {
-            stringBuilder.append(line).append("\n\n");
-            line = bufferedReader.readLine();
+    /**
+     * Loads author and license metadata for all used images in country photos
+     * @return list of media metadata
+     */
+    private List<MediaMetadata> loadPhotosMetadata() throws IOException {
+        final AssetManager assetManager = getActivity().getAssets();
+        final String rootPath = PropUtils.get("resources.country.photo.path");
+        final String[] countryFolders = assetManager.list(rootPath);
+        final ObjectMapper objectMapper = new ObjectMapper();
+        final List<MediaMetadata> data = new LinkedList<>();
+
+        for (String countryFolder : countryFolders) {
+            final String countryFolderPath = rootPath + File.separator + countryFolder;
+            final String[] countryFiles = assetManager.list(countryFolderPath);
+            for (String file : countryFiles) {
+                if (FilenameUtils.isExtension(file, "json")) {
+                    final MediaMetadata metadata = new GalleryImageMetadataParser.Builder(getActivity())
+                            .objectMapper(objectMapper)
+                            .inputStream(assetManager.open(countryFolderPath + File.separator + file))
+                            .build()
+                            .getMetadata();
+
+                    data.add(metadata);
+                }
+            }
         }
-        return stringBuilder.toString();
+        return data;
     }
 
     @Override

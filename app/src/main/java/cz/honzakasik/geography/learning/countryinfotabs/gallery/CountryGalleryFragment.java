@@ -28,6 +28,7 @@ import java.util.List;
 import cz.honzakasik.geography.R;
 import cz.honzakasik.geography.common.location.country.Country;
 import cz.honzakasik.geography.common.utils.PropUtils;
+import cz.honzakasik.geography.learning.countryinfotabs.gallery.galleryimage.MediaMetadata;
 import cz.honzakasik.geography.learning.location.CountryInfoActivity;
 import cz.honzakasik.geography.learning.countryinfotabs.gallery.fullscreen.FullscreenGalleryFragment;
 import cz.honzakasik.geography.learning.countryinfotabs.gallery.galleryimage.GalleryImage;
@@ -132,16 +133,12 @@ public class CountryGalleryFragment extends Fragment {
                 //load metadata
                 final String metadataFileName = FilenameUtils.removeExtension(file) +
                         PropUtils.get("resources.country.photo.metadata.suffix");
-                final GalleryImageMetadataParser parser = metadataParserBuilder
+                final MediaMetadata metadata = metadataParserBuilder
                         .inputStream(getContext().getAssets().open(countryRelativeFolder + File.separator + metadataFileName))
-                        .build();
+                        .build()
+                        .getMetadata();
 
-                builder.description(parser.getDescription())
-                        .author(parser.getAuthor())
-                        .license(parser.getLicense())
-                        .publicDomain(parser.isPublicDomain());
-
-                images.add(builder.build());
+                images.add(builder.metadata(metadata).build());
             }
         }
         return images;
