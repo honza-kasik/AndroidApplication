@@ -1,10 +1,10 @@
 {
-  "description": {
-    "en": "Wallenstein Palace, seat of the Senate",
-    "cs": "Valdštejnský palác, sídlo senátu"
-  },
-  "original_file": "WallensteinPalacePrague.jpg",
-  "author": "",
-  "license": "CC PD",
-  "source_url": "https://commons.wikimedia.org/wiki/File:WallensteinPalacePrague.jpg"
+    "author": "Packare",
+    "description": {
+        "en": "Wallenstein Palace, Prague",
+        "cs": "Valdštejnský palác, Praha, sídlo senátu"
+    },
+    "license": "CC0",
+    "original_file": "WallensteinPalacePrague.jpg",
+    "source_url": "https://en.wikipedia.org/wiki/Czech_Republic#/media/File:WallensteinPalacePrague.jpg"
 }
