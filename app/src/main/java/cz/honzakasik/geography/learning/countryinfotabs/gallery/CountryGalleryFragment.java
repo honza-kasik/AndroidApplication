@@ -104,7 +104,6 @@ public class CountryGalleryFragment extends Fragment {
      * Loads list of images with metadata according to iso-2 of country
      * @param country images of this country will be load
      * @return list of images with metadata of given country
-     * @throws IOException
      */
     private List<GalleryImage> getImagesAccordingToCountry(@NonNull Country country)
             throws IOException {

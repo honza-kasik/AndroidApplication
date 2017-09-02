@@ -3,6 +3,9 @@ package cz.honzakasik.geography.learning.countryinfotabs.gallery.galleryimage;
 import java.io.Serializable;
 import java.net.URI;
 
+/**
+ * Class representing image displayed in gallery
+ */
 public class GalleryImage implements Serializable {
 
     private String name;

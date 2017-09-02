@@ -33,6 +33,7 @@ public class FullscreenGalleryFragment extends DialogFragment {
     public FullscreenGalleryFragment() {
     }
 
+    @SuppressWarnings(value="unchecked")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
         View view = inflater.inflate(R.layout.fragment_image_slider, container, false);

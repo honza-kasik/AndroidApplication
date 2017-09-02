@@ -81,6 +81,7 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
         Preference dialogPreference = getPreferenceScreen().findPreference(PreferencesConstants.ABOUT_APPLICATION);
         dialogPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             public boolean onPreferenceClick(Preference preference) {
+                //TODO replace by string resource
                 StringBuilder stringBuilder = new StringBuilder()
                         .append("Author: Jan Kašík <kasik.honza@gmail.com>").append("\n")
                         .append("Version: ").append(BuildConfig.VERSION_NAME).append("\n")

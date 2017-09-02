@@ -11,8 +11,12 @@ import java.util.Locale;
 
 import cz.honzakasik.geography.common.utils.PropUtils;
 
+/**
+ * Parser parsing {@link MediaMetadata} from JSON files
+ */
 public class GalleryImageMetadataParser {
 
+    //Strings recognized as a public domain identifier
     private static final String[] PUBLIC_DOMAIN_LICENSES = {"CC PD"};
 
     private ObjectMapper objectMapper;
@@ -25,8 +29,12 @@ public class GalleryImageMetadataParser {
         this.context = builder.context;
         this.metadata = parse(builder.inputStream);
     }
-
+    /**
+     * Get parsed metadata
+     * @return parsed {@link MediaMetadata}
+     */
     public MediaMetadata getMetadata() {
+
         return metadata;
     }
 
@@ -76,16 +84,29 @@ public class GalleryImageMetadataParser {
             this.context = context;
         }
 
+        /**
+         * Input stream containing parseable JSON file with all required image metadata.
+         * NO VALIDATION IS PERFORMED!!
+         * @param inputStream Valid JSON with image metadata
+         */
         public Builder inputStream(InputStream inputStream) {
             this.inputStream = inputStream;
             return this;
         }
 
+        /**
+         * {@link ObjectMapper} instance used to parse JSON from input stream. If not set, new
+         * instance will be used
+         * @param objectMapper instance used to parse file
+         */
         public Builder objectMapper(ObjectMapper objectMapper) {
             this.objectMapper = objectMapper;
             return this;
         }
 
+        /**
+         * Build new {@link GalleryImageMetadataParser} instance
+         */
         public GalleryImageMetadataParser build() throws IOException {
             if (objectMapper == null) {
                 objectMapper = new ObjectMapper();
